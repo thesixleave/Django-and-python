@@ -1,0 +1,54 @@
+
+
+
+<script>
+
+
+function ShowTime(){
+　var NowDate=new Date();
+　var h=NowDate.getHours();
+　var m=NowDate.getMinutes();
+　var s=NowDate.getSeconds();　
+　document.getElementById('showbox').innerHTML = h+':'+m+':'+s;
+ setTimeout('ShowTime()',1000)
+　setTimeout("location.href='http://127.0.0.1:8000/'",60000)
+}
+
+
+</script>
+<style>
+
+
+
+</style>
+
+
+<body onload="ShowTime()">
+<div id="showbox"></div>
+<h1>Ubike<h1>
+
+<table width=100%>
+<thead align="left">
+    <tr>
+      <th>站點代號</th>
+      <th>場站名稱(中文)</th>
+      <th>場站目前車輛數量</th>
+      <th>空位數量</th>
+      <th>場站總停車格</th>
+      <th>資料更新時間</th>
+      <th>地點(中文)</th>
+      
+    </tr>
+  </thead>
+{% for k, v in data.retVal.items%}
+
+<tr><td>{{v.sno}}</td> <td>{{v.sna}}</td>
+    <td align="center">{{v.sbi}}</td>
+    <td align="center">{{v.bemp}}</td>
+    <td align="center">{{v.tot}}</td>
+    <td>{{v.mday}}</td>
+    <td>{{v.ar}}</td> </tr>
+{% endfor %}
+</table> 
+
+</body>
